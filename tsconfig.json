@@ -1,6 +1,46 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "baseUrl": "./src/",
+    "paths": {
+      /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+      "@components": [
+        "./components"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@navigation/*": [
+        "./navigation/*"
+      ],
+      "@custom-types/*": [
+        "./types/*"
+      ],
+      "@api/*": [
+        "./api/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@screens/*": [
+        "./screens/*"
+      ],
+      "@store/*": [
+        "./store/*"
+      ],
+      "@store": [
+        "./store"
+      ],
+      "@navigators/*": [
+        "./navigators/*"
+      ],
+    },
   }
 }
