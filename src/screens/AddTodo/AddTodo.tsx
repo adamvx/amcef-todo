@@ -9,6 +9,7 @@ import { initialValues, validationSchema } from "./AddTodo.schema";
 import Button from "@components/Button";
 import { queryClient } from "@utils/reactQuery/reactQuery";
 import TodoListItemsQuery from "@hooks/query/todoListItem/useTodoListItems";
+import { StyleSheet } from "react-native";
 
 type TNav = TRootNavigator<"AddTodo">;
 
@@ -39,7 +40,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ navigation, route }) => {
 
 	return (
 		<LayoutWrapper>
-			<Layout level="2" style={{ flex: 1, padding: 16, gap: 16 }}>
+			<Layout level="2" style={styles.container}>
 				<Input
 					label="Názov Todo"
 					placeholder="Názov sem..."
@@ -66,7 +67,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ navigation, route }) => {
 				/>
 			</Layout>
 			<Divider />
-			<Layout level="1" style={{ padding: 16 }}>
+			<Layout level="1" style={styles.saveWrapper}>
 				<Button onPress={submitForm} isLoading={isLoading}>
 					Uložiť
 				</Button>
@@ -74,5 +75,10 @@ const AddTodo: React.FC<AddTodoProps> = ({ navigation, route }) => {
 		</LayoutWrapper>
 	);
 };
+
+const styles = StyleSheet.create({
+	container: { flex: 1, padding: 16, gap: 16 },
+	saveWrapper: { padding: 16 },
+});
 
 export default React.memo(AddTodo);

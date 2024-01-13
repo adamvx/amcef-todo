@@ -19,7 +19,7 @@ import {
 	TopNavigationAction,
 } from "@ui-kitten/components";
 import React, { useMemo, useState } from "react";
-import { ListRenderItemInfo, StyleProp, View, ViewStyle } from "react-native";
+import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 import ListDetailItem from "./components/ListDetailItem";
 
 type TNav = TRootNavigator<"ListDetail">;
@@ -79,16 +79,9 @@ const ListDetail: React.FC<ListDetailProps> = ({ navigation, route }) => {
 		[navigation]
 	);
 
-	const contentContainerStyle = useMemo<StyleProp<ViewStyle>>(
-		() => ({
-			padding: 4,
-		}),
-		[]
-	);
-
 	return (
 		<LayoutWrapper>
-			<View style={{ padding: 16 }}>
+			<View style={styles.search}>
 				<Input
 					value={search}
 					placeholder="Vyhľadávanie"
@@ -100,11 +93,17 @@ const ListDetail: React.FC<ListDetailProps> = ({ navigation, route }) => {
 			<List
 				data={filteredData}
 				renderItem={_renderItem}
-				ItemSeparatorComponent={() => <View style={{ height: 4 }} />}
-				contentContainerStyle={contentContainerStyle}
+				ItemSeparatorComponent={() => <View style={styles.divider} />}
+				contentContainerStyle={styles.contentContainer}
 			/>
 		</LayoutWrapper>
 	);
 };
+
+const styles = StyleSheet.create({
+	search: { padding: 16 },
+	divider: { height: 4 },
+	contentContainer: { padding: 4 },
+});
 
 export default React.memo(ListDetail);

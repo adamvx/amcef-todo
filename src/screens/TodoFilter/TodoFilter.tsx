@@ -6,6 +6,7 @@ import { appActions } from "@store/app/app.slice";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { IndexPath, Layout, Select, SelectItem } from "@ui-kitten/components";
 import React, { useCallback } from "react";
+import { StyleSheet } from "react-native";
 
 type TNav = TRootNavigator<"TodoFilter">;
 
@@ -42,7 +43,7 @@ const TodoFilter: React.FC<TodoFilterProps> = ({}) => {
 
 	return (
 		<LayoutWrapper>
-			<Layout level="2" style={{ flex: 1, padding: 16, gap: 16 }}>
+			<Layout level="2" style={styles.wrapper}>
 				<Select
 					value={todoStatusTextMap[filter]}
 					selectedIndex={selected}
@@ -56,5 +57,9 @@ const TodoFilter: React.FC<TodoFilterProps> = ({}) => {
 		</LayoutWrapper>
 	);
 };
+
+const styles = StyleSheet.create({
+	wrapper: { flex: 1, padding: 16, gap: 16 },
+});
 
 export default React.memo(TodoFilter);

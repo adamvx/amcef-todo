@@ -9,6 +9,7 @@ import React from "react";
 import { initialValues, validationSchema } from "./AddList.schema";
 import { queryClient } from "@utils/reactQuery/reactQuery";
 import TodoListsQuery from "@hooks/query/todoList/useTodoLists";
+import { StyleSheet } from "react-native";
 
 type TNav = TRootNavigator<"AddList">;
 
@@ -32,7 +33,7 @@ const AddList: React.FC<AddListProps> = ({ navigation }) => {
 
 	return (
 		<LayoutWrapper>
-			<Layout level="2" style={{ flex: 1, padding: 16 }}>
+			<Layout level="2" style={styles.container}>
 				<Input
 					label="Názov Todo listu"
 					placeholder="Názov sem..."
@@ -43,7 +44,7 @@ const AddList: React.FC<AddListProps> = ({ navigation }) => {
 				/>
 			</Layout>
 			<Divider />
-			<Layout level="1" style={{ padding: 16 }}>
+			<Layout level="1" style={styles.saveWrapper}>
 				<Button onPress={submitForm} isLoading={isLoading}>
 					Uložiť
 				</Button>
@@ -51,5 +52,10 @@ const AddList: React.FC<AddListProps> = ({ navigation }) => {
 		</LayoutWrapper>
 	);
 };
+
+const styles = StyleSheet.create({
+	container: { flex: 1, padding: 16 },
+	saveWrapper: { padding: 16 },
+});
 
 export default React.memo(AddList);
